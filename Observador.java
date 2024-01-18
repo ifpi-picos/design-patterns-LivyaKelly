@@ -1,4 +1,3 @@
-public abstract class Observador {
-    public abstract void notificar(Noticia noticia);
-    
+public interface Observador {
+    void notificar(Noticia noticia);
 }

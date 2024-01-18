@@ -1,34 +1,25 @@
-// Sistema de Atualização de Notícias em Aplicações de Mídia
-
+// App.java
 public class App {
 
     public static void main(String[] args) {
-        // Cria o sujeito
-        Sujeito sujeito = new Sujeito();
+        // Cria a notícia (o sujeito observado)
+        Noticia noticia = new Noticia("Título inicial da notícia");
 
-        // Cria observadores
-        Observador observador1 = new Observador() {
-            @Override
-            public void notificar(Noticia noticia) {
-                System.out.println("Observador 1 notificado: " + noticia.getTitulo());
-            }
-        };
+        // Cria observador concreto
+        ObservadorConcreto observador = new ObservadorConcreto();
 
-        Observador observador2 = new Observador() {
-            @Override
-            public void notificar(Noticia noticia) {
-                System.out.println("Observador 2 notificado: " + noticia.getTitulo());
-            }
-        };
+        // Adiciona o observador concreto à notícia
+        noticia.adicionarObservador(observador);
 
-        // Adiciona os observadores ao sujeito
-        sujeito.adicionarObservador(observador1);
-        sujeito.adicionarObservador(observador2);
+        // Exibe o título inicial da notícia
+        System.out.println("Título inicial: " + noticia.getTitulo());
 
-        // Cria uma nova notícia
-        Noticia noticia = new Noticia("Título da notícia", "Conteúdo da notícia", "Categoria da notícia");
+        // Altera o título da notícia
+        noticia.setTitulo("Novo título da notícia");
 
-        // Notifica os observadores
-        sujeito.notificarObservadores(noticia);
+        // Observadores serão notificados automaticamente
+
+        // Exibe o título atualizado da notícia
+        System.out.println("Título atualizado: " + noticia.getTitulo());
     }
 }
